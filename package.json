@@ -1,0 +1,26 @@
+{
+  "name": "river-quality-atlas",
+  "private": true,
+  "packageManager": "pnpm@10.6.3",
+  "engines": {
+    "node": ">=22.13.0 <23",
+    "pnpm": "10.6.3"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c cyan,green \"./.venv/bin/uvicorn river_quality_atlas.api:app --reload --host 127.0.0.1 --port 8000\" \"pnpm --filter @river-quality-atlas/web dev\"",
+    "build": "pnpm --filter @river-quality-atlas/web build",
+    "lint": "pnpm --filter @river-quality-atlas/web lint",
+    "typecheck": "pnpm --filter @river-quality-atlas/web typecheck",
+    "test": "./.venv/bin/pytest -q",
+    "test:e2e": "pnpm --filter @river-quality-atlas/web test:e2e",
+    "data:quickstart": "uv run python -m river_quality_atlas.ingestion.cli download --profile quickstart && uv run python -m river_quality_atlas.ingestion.cli prepare",
+    "data:standard": "uv run python -m river_quality_atlas.ingestion.cli download --profile standard && uv run python -m river_quality_atlas.ingestion.cli prepare",
+    "data:full": "uv run python -m river_quality_atlas.ingestion.cli download --profile full && uv run python -m river_quality_atlas.ingestion.cli prepare",
+    "data:prepare": "uv run python -m river_quality_atlas.ingestion.cli prepare",
+    "data:validate": "uv run python -m river_quality_atlas.ingestion.cli validate",
+    "data:status": "uv run python -m river_quality_atlas.ingestion.cli status"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.7"
+  }
+}

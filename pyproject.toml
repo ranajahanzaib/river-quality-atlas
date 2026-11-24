@@ -1,0 +1,36 @@
+[project]
+name = "river-quality-atlas"
+version = "0.1.0"
+description = "Scientific exploration of water chemistry alongside river flow."
+requires-python = ">=3.12"
+dependencies = [
+  "duckdb",
+  "fastapi",
+  "httpx",
+  "numpy",
+  "polars",
+  "pyarrow",
+  "pydantic-settings",
+  "scipy",
+  "uvicorn[standard]",
+]
+
+[project.optional-dependencies]
+science = ["geopandas", "pyproj", "shapely", "statsmodels", "xarray", "zarr"]
+
+[dependency-groups]
+dev = ["pytest", "ruff"]
+
+[tool.uv]
+package = false
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
