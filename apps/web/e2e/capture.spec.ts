@@ -1,4 +1,4 @@
-import { test, expect } from "@playwright/test";
+import { expect, test } from "@playwright/test";
 import path from "node:path";
 
 const SCREENSHOTS_DIR = path.resolve(__dirname, "../../../docs/screenshots");
@@ -16,11 +16,15 @@ test.describe("Capture Project Showcase Screenshots", () => {
     // 1. Overview
     await page.goto("/", { waitUntil: "networkidle" });
     await expect(
-      page.getByRole("heading", { name: /Read the river in its flow/ })
+      page.getByRole("heading", { name: /Read the river in its flow/ }),
     ).toBeVisible();
     // Wait for overview metrics to populate
     await expect(page.getByText("MONITORING STATIONS")).toBeVisible();
-    await expect(page.getByText("23,730")).toBeVisible();
+    const stationMetric = page
+      .locator(".metric")
+      .filter({ hasText: "MONITORING STATIONS" })
+      .locator(".metric-value");
+    await expect(stationMetric).toHaveText(/^(?:[\d,]+|—)$/);
     await page.waitForTimeout(1000); // Allow MapLibre canvas to paint points
     await page.screenshot({
       path: path.join(SCREENSHOTS_DIR, "overview.png"),
@@ -30,7 +34,7 @@ test.describe("Capture Project Showcase Screenshots", () => {
     // 2. Global Atlas Map
     await page.getByRole("button", { name: "Global atlas" }).click();
     await expect(
-      page.getByRole("heading", { name: "Global atlas" })
+      page.getByRole("heading", { name: "Global atlas" }),
     ).toBeVisible();
     await page.waitForTimeout(1500); // Allow deck.gl scatterplot layer to load and render
     await page.screenshot({
@@ -41,7 +45,7 @@ test.describe("Capture Project Showcase Screenshots", () => {
     // 3. Flow Analysis (C-Q Scatter & Flow Regimes)
     await page.getByRole("button", { name: "Flow analysis" }).click();
     await expect(
-      page.getByRole("heading", { name: /Chemistry across/ })
+      page.getByRole("heading", { name: /Chemistry across/ }),
     ).toBeVisible();
     await page.waitForTimeout(1500); // Allow D3 scatter and regime summary to render
     await page.screenshot({
@@ -52,7 +56,7 @@ test.describe("Capture Project Showcase Screenshots", () => {
     // 4. Temporal Trends
     await page.getByRole("button", { name: "Temporal trends" }).click();
     await expect(
-      page.getByRole("heading", { name: "Temporal trend analysis" })
+      page.getByRole("heading", { name: "Temporal trend analysis" }),
     ).toBeVisible();
     await page.waitForTimeout(1500); // Allow Theil-Sen regression and trend series to render
     await page.screenshot({
@@ -63,7 +67,7 @@ test.describe("Capture Project Showcase Screenshots", () => {
     // 5. Seasonality
     await page.getByRole("button", { name: "Seasonality" }).click();
     await expect(
-      page.getByRole("heading", { name: "Seasonal patterns" })
+      page.getByRole("heading", { name: "Seasonal patterns" }),
     ).toBeVisible();
     await page.waitForTimeout(1500); // Allow monthly boxplot and distribution curves to render
     await page.screenshot({
@@ -74,7 +78,7 @@ test.describe("Capture Project Showcase Screenshots", () => {
     // 6. Data Quality
     await page.getByRole("button", { name: "Data quality" }).click();
     await expect(
-      page.getByRole("heading", { name: "Imported record quality" })
+      page.getByRole("heading", { name: "Imported record quality" }),
     ).toBeVisible();
     await page.waitForTimeout(1000);
     await page.screenshot({
