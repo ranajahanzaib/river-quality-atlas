@@ -1,46 +1,35 @@
-## Contributing
+# Contributing
 
-We welcome contributions of all kinds to improve this project! Here's how you can get involved:
+Contributions are welcome. For bugs and feature proposals, use the repository's GitHub issue templates. For code changes, open a pull request with a concise description of the problem and the proposed change.
 
-1. **Fork the Repository**: Start by forking the repository to your GitHub account.
+## Development setup
 
-2. **Clone Your Fork**: Clone the forked repository to your local machine:
+Install the project dependencies and prepare the local Python environment:
 
-   ```bash
-   git clone <repo_url>
-   cd repo_dir
-   ```
+```bash
+pnpm install
+uv sync
+```
 
-3. **Create a Branch**: Create a new branch for your feature or bug fix:
+Start the web application and API with `pnpm dev`. See the [README](README.md) for data import options. Data downloads are optional; tests use isolated records and do not require the full release.
 
-   ```bash
-   git checkout -b feature-name
-   ```
+## Checks
 
-4. **Make Changes**: Make your changes to the codebase. Be sure to follow existing code style and conventions.
+Run the checks relevant to your changes before opening a pull request:
 
-5. **Commit Changes**: Commit your changes with a clear and descriptive message:
+```bash
+pnpm lint
+pnpm typecheck
+pnpm test
+uv run ruff check river_quality_atlas tests
+pnpm build
+```
 
-   ```bash
-   git commit -m "Add detailed description of the changes"
-   ```
+For changes to browser workflows, install Playwright Chromium with `pnpm --filter @river-quality-atlas/web exec playwright install chromium` and run `pnpm test:e2e`.
 
-6. **Push Changes**: Push your changes to your fork:
+## Pull requests
 
-   ```bash
-   git push origin feature-name
-   ```
-
-7. **Submit a Pull Request**: Open a pull request from your branch to the main repository's branch. Include a detailed description of your changes and the problem they solve.
-
-8. **Review and Feedback**: Participate in the review process. Make any requested changes, and your contribution will be merged!
-
-### Guidelines
-
-- Ensure your code follows the existing style and conventions.
-- Include tests for any new functionality or bug fixes.
-- Write clear, concise commit messages and pull request descriptions.
-
-### Issues
-
-Feel free to report bugs or suggest enhancements by creating an issue. Be sure to include detailed information about the problem and, if possible, steps to reproduce it.
+- Keep changes focused and describe user-visible behavior and scientific assumptions.
+- Add or update tests when behavior changes.
+- Update documentation when setup, API behavior, data handling, or analytical methods change.
+- Do not include credentials, downloaded source datasets, or generated Parquet files. Dataset licensing terms vary by source; see [data licenses](docs/data-licenses.md).

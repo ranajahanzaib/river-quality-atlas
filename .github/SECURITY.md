@@ -2,8 +2,8 @@
 
 ## Reporting a Vulnerability
 
-Please do not report security vulnerabilities through public GitHub issues.
+Do not report security vulnerabilities through public GitHub issues.
 
-Instead, report them via GitHub's private [Security Advisories](../../security/advisories/new) feature. Include as much detail as possible: a description of the issue, steps to reproduce, and potential impact.
+Report vulnerabilities through [GitHub Security Advisories](https://github.com/ranajahanzaib/river-quality-atlas/security/advisories/new). If private reporting is unavailable, use the contact method listed on the [maintainer's GitHub profile](https://github.com/ranajahanzaib). Include the affected version, reproduction steps and potential impact. Do not include secrets or personal data in a report.
 
-You can expect an acknowledgment within 48 hours and a resolution timeline once the issue is confirmed.
+The maintainer will acknowledge reports and share a resolution plan when available. Response and resolution times depend on severity and investigation requirements; no fixed service level is promised.

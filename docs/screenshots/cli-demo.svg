@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 532" width="860" height="532">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#101a21"/>
+      <stop offset="100%" stop-color="#080f14"/>
+    </linearGradient>
+  </defs>
+  <rect width="860" height="532" rx="10" fill="url(#bg)" stroke="#263943" stroke-width="1.5"/>
+  <circle cx="24" cy="22" r="6" fill="#ef6b73"/>
+  <circle cx="44" cy="22" r="6" fill="#ebc56a"/>
+  <circle cx="64" cy="22" r="6" fill="#4ccb91"/>
+  <text x="430" y="26" text-anchor="middle" fill="#617984" font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace" font-size="12">river-quality-atlas-data ingestion pipeline</text>
+  <line x1="0" y1="44" x2="860" y2="44" stroke="#263943" stroke-width="1"/>
+  <g font-family="ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace" font-size="13.5" letter-spacing="0.3px">
+    <text x="24" y="83" fill="#36d6c2" font-weight="600">$ </text><text x="42" y="83" fill="#edf5f5" font-weight="500">uv run python -m river_quality_atlas.ingestion.cli status</text><text x="24" y="103" fill="#617984">{</text><text x="24" y="123" fill="#94a9b2">  &quot;release&quot;: &quot;Caravan-Qual lite v1.1&quot;,</text><text x="24" y="143" fill="#94a9b2">  &quot;doi&quot;: &quot;10.5281/zenodo.21337532&quot;,</text><text x="24" y="163" fill="#94a9b2">  &quot;observation_files&quot;: [&quot;DO.csv&quot;, &quot;NO3N.csv&quot;, &quot;pH.csv&quot;],</text><text x="24" y="183" fill="#94a9b2">  &quot;prepared_files&quot;: [&quot;DO.parquet&quot;, &quot;NO3N.parquet&quot;, &quot;pH.parquet&quot;],</text><text x="24" y="203" fill="#4ccb91">  &quot;ready&quot;: true</text><text x="24" y="223" fill="#617984">}</text><text x="24" y="243" fill="#617984"></text><text x="24" y="263" fill="#36d6c2" font-weight="600">$ </text><text x="42" y="263" fill="#edf5f5" font-weight="500">uv run python -m river_quality_atlas.ingestion.cli validate</text><text x="24" y="283" fill="#617984">{</text><text x="24" y="303" fill="#4ccb91">  &quot;valid&quot;: true,</text><text x="24" y="323" fill="#94a9b2">  &quot;metadata_schema&quot;: &quot;verified (23,730 stations, 52 countries)&quot;,</text><text x="24" y="343" fill="#94a9b2">  &quot;flow_gauges&quot;: &quot;linked (9,947 stations)&quot;</text><text x="24" y="363" fill="#617984">}</text><text x="24" y="383" fill="#617984"></text><text x="24" y="403" fill="#36d6c2" font-weight="600">$ </text><text x="42" y="403" fill="#edf5f5" font-weight="500">uv run python -m river_quality_atlas.ingestion.cli prepare</text><text x="24" y="423" fill="#459ddf">Prepared DO: 28,320 records</text><text x="24" y="443" fill="#459ddf">Prepared NO3N: 28,320 records</text><text x="24" y="463" fill="#459ddf">Prepared pH: 28,320 records</text><text x="24" y="483" fill="#459ddf">Prepared 84,960 observation rows across 3 constituent files.</text><text x="24" y="503" fill="#4ccb91">✓ Normalization complete (ZSTD-compressed Parquet with column statistics)</text>
+  </g>
+</svg>

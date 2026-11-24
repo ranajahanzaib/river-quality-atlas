@@ -1,10 +1,11 @@
-Fixes #<issue_number_goes_here>
+## Summary
 
-> It's a good idea to open an issue first for discussion.
+Describe the change and the user problem it addresses.
 
-**Description**
-A brief summary of what this PR does and why.
+## Verification
 
-- [ ] Tests pass
-- [ ] README updated if needed
-- [ ] No breaking changes (or described below)
+List the checks run and their results.
+
+## Compatibility and documentation
+
+Describe any behavior or API changes and link updated documentation.
